@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "basic";
+
+body{
+	&.is-lock{
+		margin-right: 17px;
+	    overflow: hidden;
+	}
+}
+
+// vue
+.fade-enter-active, .fade-leave-active{
+	transition: all .5s;
+}
+.fade-enter, .fade-leave-to{
+	opacity: 0;
+}
+
