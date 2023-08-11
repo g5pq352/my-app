@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const response = await fetch('https://www.solargarden.com.tw/getdata_press.php');
+const myData = await response.json();
+
+// const pages = [
+//     {
+//         slug: undefined,
+//         title: 'Astro Store',
+//         text: 'Welcome to the Astro store!',
+//     },
+//     {
+//         slug: 'news',
+//         title: 'Astro products',
+//         text: 'We have lots of products for you',
+//     },
+//     {
+//         slug: 'news/astro-handbook',
+//         title: 'The ultimate Astro handbook',
+//         text: 'If you want to learn Astro, you must read this book.',
+//     }
+// ];
+
+const { news } = Astro.params;
+
+const page = myData.find((page) => `news/`+page.id === news);
+if (!page) return Astro.redirect("/404");
+const { pic, title, content } = page;
+---
+
+<Layout title="">
+    <div class="bg-black py-40">
+        <div class="max-w-[1200px] mx-auto text-white">
+            <div class="pic"><img src={`https://www.solargarden.com.tw/`+pic}></div>
+            <h1 class="title my-6">{title}</h1>
+            <p class="content text-justify leading-normal">{content}</p>
+        </div>
+    </div>
+</Layout>
+
+<style lang="scss">
+
+</style>

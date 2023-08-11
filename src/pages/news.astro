@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const response = await fetch('https://www.solargarden.com.tw/getdata_press.php');
+const myData = await response.json();
+---
+
+<Layout title="News">
+    <div class="bg-black">
+        <div class="max-w-[1600px] mx-auto py-40">
+            <ul class="grid grid-cols-3 gap-x-10 gap-y-20">
+                {myData.map(data => (
+                    <li><a href={`../news/`+data.id}>
+                        <div class="pic mb-5 h-[350px]" style={`background: url('https://www.solargarden.com.tw/`+data.pic+`') center center / cover`}></div>
+                        <div class="title text-white">{data.title}</div>
+                    </a></li>
+                ))}
+            </ul>
+        </div>
+    </div>
+</Layout>
+
+<style lang="scss">
+
+</style>
