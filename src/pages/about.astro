@@ -7,12 +7,12 @@ const myData = await response.json();
 // const URL = import.meta.env.URL;
 ---
 
-<Layout title="About.">
+<Layout title="About">
     <div class="aboutWrap">
         <ul class="userList grid grid-cols-4 gap-y-20 gap-x-40">
             {myData.map(data => (
                 <li class="text-white text-center hover:opacity-50 transition-all duration-500 py-10">
-                    <div class="name">{data.username}</div>
+                    <h1 class="name">{data.username}</h1>
                     <div class="email">{data.email}</div>
                 </li>
             ))}
